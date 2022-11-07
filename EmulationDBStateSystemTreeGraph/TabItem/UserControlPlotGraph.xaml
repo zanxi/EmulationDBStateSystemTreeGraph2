@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="WpfApp_10_ICommand.TabItem.UserControlPlotGraph"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp_10_ICommand.TabItem"
+             xmlns:local2="clr-namespace:WpfApp_10_ICommand"             
+             xmlns:collections="clr-namespace:System.Collections;assembly=mscorlib"
+             xmlns:converters="clr-namespace:WpfApp_10_ICommand.Converters"
+             xmlns:realTimeGraphX="clr-namespace:RealTimeGraphX.WPF;assembly=RealTimeGraphX.WPF"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" d:DataContext="{d:DesignData Type=local2:MainWindowVM, IsDesignTimeCreatable=False}">
+
+    <UserControl.Resources>
+        <Style TargetType="{x:Type local2:WpfGraphControl}">
+            <Setter Property="StringFormatX" Value="0.0"></Setter>
+            <Setter Property="StringFormatY" Value="hh\:mm\:ss"></Setter>
+            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="BorderBrush" Value="#FF2E2E2E"></Setter>
+            <Setter Property="Padding" Value="20 20 30 20"></Setter>
+            <Setter Property="FontSize" Value="11"></Setter>
+            <Setter Property="Foreground" Value="DodgerBlue"></Setter>
+            <Setter Property="Background" Value="White">
+                <!--<Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" >
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="#FF333333" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>-->
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type local2:WpfGraphControl}">
+                        <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="5"
+                            Padding="{TemplateBinding Padding}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="35"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="70"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Column="1">
+                                    <realTimeGraphX:WpfGraphGridLines Controller="{TemplateBinding Controller}" Foreground="#FF2E2E2E" />
+                                    <realTimeGraphX:WpfGraphSurface x:Name="surface" Controller="{TemplateBinding Controller}" DisplayToolTip="{TemplateBinding DisplayToolTip}" BorderThickness="1 0 0 1" BorderBrush="{TemplateBinding Foreground}" />
+                                </Grid>
+
+                                <realTimeGraphX:WpfGraphAxisControl Orientation="Vertical" Controller="{TemplateBinding Controller}" StringFormat="{TemplateBinding StringFormatX}" />
+                                <realTimeGraphX:WpfGraphAxisControl Orientation="Horizontal" Controller="{TemplateBinding Controller}" Grid.Column="1" Grid.Row="1" StringFormat="{TemplateBinding StringFormatY}"/>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </UserControl.Resources>    
+        
+<Grid  x:Name="gridGraph2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <!--<ColumnDefinition Width="200"/>-->
+                    </Grid.ColumnDefinitions>
+                    <local2:WpfGraphControl x:Name="graph2"  Grid.Column="0"  Margin="10" Controller="{Binding MultiController}" />
+
+                    
+                </Grid>            
+</UserControl>

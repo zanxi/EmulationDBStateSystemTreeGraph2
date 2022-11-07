@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="WpfApp_10_ICommand.TabItem.UserControlTabItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp_10_ICommand.TabItem"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background="#e8e8e8">
+    <!--https://www.wpf-tutorial.com/ru/81/элемент-listview/how-to-listview-with-column-sorting/-->
+      <Grid Margin="10">
+        <ListView Name="lvDataDB"  ItemsSource="{Binding DataDB}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn  DisplayMemberBinding="{Binding NameVal}">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader Tag="Name" Click="lvDataDBColumnHeader_Click">Перменная</GridViewColumnHeader>
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                        <GridViewColumn  DisplayMemberBinding="{Binding DescrVal}">
+                            <GridViewColumn.Header >
+                                <GridViewColumnHeader                                     
+                                    Tag="Age" Click="lvDataDBColumnHeader_Click">Название</GridViewColumnHeader>
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                        <GridViewColumn  DisplayMemberBinding="{Binding Val}">
+                            <GridViewColumn.Header>
+                                <GridViewColumnHeader Tag="Sex" Click="lvDataDBColumnHeader_Click">Значение</GridViewColumnHeader>
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+</UserControl>
